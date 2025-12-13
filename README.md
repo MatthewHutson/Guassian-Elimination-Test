@@ -1,3 +1,5 @@
 # Guassian-Elimination-Test
 
-#Changelog
+# Changelog
+Organised Files
+Created Type Enforcer Wrapper
