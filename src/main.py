@@ -1,6 +1,7 @@
 # -- Imports -- #
 import numpy as np
-import elelemtary_row_operations as ERO
+import copy
+import elelemtary_row_operations as ero
 from utils import *
         
 # -- Subroutines -- #
@@ -26,24 +27,23 @@ def int_input(inputString: str) -> int: return input(inputString)
 @enforce_types
 def user_matrix(size: int) -> np.matrix:
     # -- Creates A Matrix Of A Given Size To Represent The Equations -- #
-    input: str = ""
-    inputStr: str = "Input the value at (" + str(j) + ", " +  str(i) + ")"
+    output: str = ""
 
     for i in range(size):
         for j in range(size):
+            inputStr: str = "Input the value at (" + str(j) + ", " +  str(i) + "): "
             invalid: bool = True
             while invalid:
                 value: str = input(inputStr)
                 try:
-                    float(value)
-                    string += str + " "
+                    output += str(float(value)) + " "
                     invalid = False
                 except ValueError:
                     printLine("Input a real number!")
 
-        input += ";" 
+        output += ";" 
 
-    output: str = input[:-2]
+    output: str = output[:-2]
     matrix: np.array = np.matrix(output)
     
     return matrix
@@ -52,9 +52,13 @@ def user_matrix(size: int) -> np.matrix:
 @enforce_types
 def main() -> None:
     size: int = int_input("Input the size of the matrix: ")
-    Identity: np.matrix = make_identity(size)
+    identity: np.matrix = make_identity(size)
+    inverse: np.matrix = copy.deepcopy(identity)
     matrix: np.matrix = user_matrix(size)
-    print(matrix)
+    augmented_matrix: list[np.matrix] = [matrix, inverse]
+
+
+    print(inverse)
 
 if __name__ == "__main__":
     main()
