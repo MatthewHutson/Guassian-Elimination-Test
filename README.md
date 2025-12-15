@@ -1,4 +1,4 @@
 # Guassian-Elimination-Test
 
 # Changelog
-Created The Elementary Row Operations
+Swapped Instances Of Matricies For 2d Numpy Arrays

@@ -6,7 +6,7 @@ from utils import *
         
 # -- Subroutines -- #
 @enforce_types
-def make_identity(size: int) -> np.matrix:
+def make_identity(size: int) -> np.ndarray:
     # -- Generates The Identity Matrix Of A Given Size -- #
     input: str = ""
 
@@ -25,26 +25,26 @@ def make_identity(size: int) -> np.matrix:
 def int_input(inputString: str) -> int: return input(inputString)
 
 @enforce_types
-def user_matrix(size: int) -> np.matrix:
+def user_matrix(size: int) -> np.ndarray:
     # -- Creates A Matrix Of A Given Size To Represent The Equations -- #
-    output: str = ""
-
+    output: list[list[int]] = []
+    
     for i in range(size):
+        temp: list[int] = []
         for j in range(size):
             inputStr: str = "Input the value at (" + str(j) + ", " +  str(i) + "): "
             invalid: bool = True
             while invalid:
-                value: str = input(inputStr)
                 try:
-                    output += str(float(value)) + " "
+                    value: int = input(inputStr)
+                    temp.append(float(value))
                     invalid = False
                 except ValueError:
                     printLine("Input a real number!")
 
-        output += ";" 
+        output.append(temp)
 
-    output: str = output[:-2]
-    matrix: np.array = np.matrix(output)
+    matrix: np.ndarray = np.ndarray(output)
     
     return matrix
 
@@ -52,13 +52,11 @@ def user_matrix(size: int) -> np.matrix:
 @enforce_types
 def main() -> None:
     size: int = int_input("Input the size of the matrix: ")
-    identity: np.matrix = make_identity(size)
-    inverse: np.matrix = copy.deepcopy(identity)
-    matrix: np.matrix = user_matrix(size)
-    augmented_matrix: list[np.matrix] = [matrix, inverse]
+    identity: np.ndarray = make_identity(size)
+    inverse: np.ndarray = copy.deepcopy(identity)
+    #matrix: np.ndarray = user_matrix(size)
+    #augmented_matrix: list[np.ndarray] = [matrix, inverse]
 
-
-    print(inverse)
 
 if __name__ == "__main__":
     main()
