@@ -1,4 +1,8 @@
 # Guassian-Elimination-Test
 
 # Changelog
-Completion Logic
+Created The Algirothm
+Added To Do List
+
+# To Do
+Test This Definately Works Properly

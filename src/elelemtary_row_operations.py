@@ -20,7 +20,7 @@ def scale_row(matrix: np.ndarray, index: int, scalar: float) -> None:
     row *= scalar
 
 @enforce_types
-def row_arithmetic(matrix: np.ndarray, index_1: int, index_2: int,  scalar: float = 1, out_index: int = None) -> None:
+def row_arithmetic(matrix: np.ndarray, index_1: int, index_2: int, scalar: float = 1, out_index: int = None) -> None:
     # - Adding Or Subtracting A Scalar Multiple Of 1 Row From Another -- #
     copy_matrix: np.ndarray = copy.deepcopy(matrix)
     scale_row(copy_matrix, index_2, scalar)
